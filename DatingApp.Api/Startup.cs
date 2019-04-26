@@ -62,6 +62,7 @@ namespace DatingApp.Api
 
 
                 });
+                services.AddScoped<LogUserActivity>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -80,7 +81,7 @@ namespace DatingApp.Api
                         var error = context.Features.Get<IExceptionHandlerFeature>();
                         if(error != null)
                         {
-                             context.Response.AddApplicationError(error.Error.Message);
+                            context.Response.AddApplicationError(error.Error.Message);
                             await context.Response.WriteAsync(error.Error.Message);
                         }
                     });
